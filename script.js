@@ -2,6 +2,9 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
 function getComputerChoice() {
 
     let random = Math.floor(Math.random() * 3) + 1
@@ -18,17 +21,19 @@ function getComputerChoice() {
             console.log("scissors")
             return "scissors";
     }
-
 }
+
 
 function getHumanChoice() {
-
-    let choice = prompt("Choose rock, paper or scissors");
-    console.log(choice);
-
+    return prompt("Choose rock, paper or scissors");
 }
 
 
+function playRound(humanChoice, computerChoice) {
+
+   let formattedHumanChoice = humanChoice.toLowerCase();
+   let formattedComputerChoice = computerChoice.toLowerCase();
+}
 
 
 
