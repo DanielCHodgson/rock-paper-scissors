@@ -26,7 +26,7 @@ function getplayerChoice() {
 
 
 function isValidEntry(playerChoice) {
-    return (playerChoice == "rock" || playerChoice == "paper" || playerChoice == "scissors");
+    return (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors");
 }
 
 
