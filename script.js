@@ -66,13 +66,15 @@ function playRound() {
 }
 
 
-
-
 function playGame() {
 
     let roundNumber = 1;
     let playerScore = 0;
     let computerScore = 0;
+
+    console.log("=================================")
+    console.log("Welcome to rock paper scissors! \nThis game is played over 5 rounds. \nChoose your weapon and let the \nbest player win!")
+    console.log("=================================")
 
     for (i = roundNumber; roundNumber <= 5; i++) {
 
