@@ -25,7 +25,15 @@ function isValidEntry(playerChoice) {
 
 function playRound() {
 
-    let playerChoice = getplayerChoice().toLocaleLowerCase();
+    let playerChoice = getplayerChoice();
+
+    if (playerChoice == null) {
+        console.log("Game abandoned! You Coward!")
+        return "cancel";
+    } else {
+        playerChoice = playerChoice.toLocaleLowerCase();
+    }
+
     let computerChoice = getComputerChoice().toLocaleLowerCase();
 
     console.log("Player choice: " + playerChoice);
@@ -73,7 +81,7 @@ function playGame() {
     let computerScore = 0;
 
     console.log("=================================")
-    console.log("Welcome to rock paper scissors! \nThis game is played over 5 rounds. \nChoose your weapon and let the \nbest player win!")
+    console.log("Welcome to rock paper scissors! \nThis game is played over 5 rounds. \nChoose your weapon and let the \nbest computer win!")
     console.log("=================================")
 
     for (i = roundNumber; roundNumber <= 5; i++) {
@@ -98,6 +106,9 @@ function playGame() {
 
             case "invalid":
                 break;
+
+            case "cancel":
+                return;
         }
 
         console.log("================")
