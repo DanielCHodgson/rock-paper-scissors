@@ -1,10 +1,3 @@
-let roundNumber = 0;
-let playerScore = 0;
-let computerScore = 0;
-
-const humanSelection = getplayerChoice().toLocaleLowerCase();
-const computerSelection = getComputerChoice().toLocaleLowerCase();
-
 function getComputerChoice() {
 
     let random = Math.floor(Math.random() * 3) + 1
@@ -30,39 +23,42 @@ function isValidEntry(playerChoice) {
 }
 
 
-function playRound(playerChoice, computerChoice) {
+function playRound() {
+
+    let playerChoice = getplayerChoice().toLocaleLowerCase();
+    let computerChoice = getComputerChoice().toLocaleLowerCase();
 
     console.log("Player choice: " + playerChoice);
     console.log("Computer choice: " + computerChoice);
 
     let outcome = "";
 
-    if(!isValidEntry(playerChoice)) {
+    if (!isValidEntry(playerChoice)) {
         outcome = "invalid";
-        console.log(outcome);
+        console.log("Invalid entry, enter 'rock', 'paper' or 'scissors'");
         return outcome;
     }
 
     if (playerChoice === computerChoice) {
         outcome = "draw"
-        console.log(outcome);
+        console.log("It's a draw!");
         return outcome;
-    } 
+    }
 
 
-    switch(playerChoice) {
+    switch (playerChoice) {
         case "rock":
             computerChoice === "scissors" ? outcome = "win" : outcome = "lose";
-            console.log(outcome);
-            break; 
+            console.log("You " + outcome + "!");
+            break;
         case "paper":
             computerChoice === "rock" ? outcome = "win" : outcome = "lose";
-            console.log(outcome);
+            console.log("You " + outcome + "!");
             break;
 
         case "scissors":
             computerChoice === "paper" ? outcome = "win" : outcome = "lose";
-            console.log(outcome);
+            console.log("You " + outcome + "!");
             break;
     }
 
@@ -70,7 +66,52 @@ function playRound(playerChoice, computerChoice) {
 }
 
 
-playRound(humanSelection, computerSelection);
+
+
+function playGame() {
+
+    let roundNumber = 1;
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (i = roundNumber; roundNumber <= 5; i++) {
+
+        console.log("Round: " + roundNumber)
+
+        switch (playRound()) {
+            case "win":
+                playerScore += 1;
+                roundNumber += 1;
+                console
+                break;
+
+            case "lose":
+                computerScore += 1;
+                roundNumber += 1;
+                break;
+
+            case "draw":
+                roundNumber += 1;
+                break;
+
+            case "invalid":
+                if (roundNumber > 1) roundNumber -= 1;
+                break;
+        }
+
+        console.log("================")
+    }
+
+    if (roundNumber >= 5 && playerScore > computerScore) {
+        console.log("Congratulations! You win " + playerScore + " to " + computerScore + "!");
+    }
+    else if (roundNumber >= 5 && playerScore < computerScore) {
+        console.log("You lose " + computerScore + " to " + playerScore + "! better luck next time!");
+    }
+    else console.log("Game tied " + playerScore + ":" + computerScore + "!");
+}
+
+playGame();
 
 
 
