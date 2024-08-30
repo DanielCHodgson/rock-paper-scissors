@@ -95,7 +95,6 @@ function playGame() {
                 break;
 
             case "invalid":
-                if (roundNumber > 1) roundNumber -= 1;
                 break;
         }
 
